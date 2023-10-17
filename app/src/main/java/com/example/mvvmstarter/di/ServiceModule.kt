@@ -1,6 +1,7 @@
 package com.example.mvvmstarter.di
 
 
+import com.example.mvvmstarter.data.interceptor.AuthInterceptor
 import com.example.mvvmstarter.data.service.BaseService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -20,13 +21,14 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object ServiceModule {
 
+    private const val BASE_URL = "" // TODO Url 추가 필요
+
     @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
         .readTimeout(5000, TimeUnit.MILLISECONDS)
         .connectTimeout(5000, TimeUnit.MILLISECONDS)
-//            .addInterceptor(ResponseInterceptor()) // Refresh Token TODO interceptor 추가 필요 (주석 해제)
-//            .addInterceptor(RequestInterceptor()) // JWT 자동 헤더 전송 TODO interceptor 추가 필요 (주석 해제)
+        .addInterceptor(AuthInterceptor()) // TODO interceptor 추가 필요 (주석 해제)
         .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         .build()
 
@@ -39,7 +41,7 @@ object ServiceModule {
 
 
         return Retrofit.Builder()
-//            .baseUrl(BASE_URL) TODO BASE_URL 추가 필요 (주석 해제)
+            .baseUrl(BASE_URL) // TODO BASE_URL 추가 필요
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)

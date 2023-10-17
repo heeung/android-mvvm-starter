@@ -1,9 +1,10 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("dagger.hilt.android.plugin")
-    id("androidx.navigation.safeargs.kotlin")
-    id("org.jetbrains.kotlin.kapt")
+    id ("com.android.application")
+    id ("org.jetbrains.kotlin.android")
+    id ("org.jetbrains.kotlin.kapt")
+    id ("kotlin-parcelize")
+    id ("dagger.hilt.android.plugin")
+    id ("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -46,7 +47,7 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -86,8 +87,8 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
     //hilt
-    implementation ("com.google.dagger:hilt-android:2.43.2")
-    kapt ("com.google.dagger:hilt-compiler:2.43.2")
+    implementation ("com.google.dagger:hilt-android:2.44")
+    kapt ("com.google.dagger:hilt-compiler:2.44")
 
     //room
     val room_version = "2.4.3"
@@ -95,15 +96,9 @@ dependencies {
     kapt ("androidx.room:room-compiler:$room_version")
     implementation ("androidx.room:room-ktx:$room_version")
 
-    //recyclerview
-    implementation ("com.github.sparrow007:carouselrecyclerview:1.2.6")
-
-    //카카오 로그인
-    implementation ("com.kakao.sdk:v2-all:2.16.0") // 전체 모듈 설치, 2.11.0 버전부터 지원
-    implementation ("com.kakao.sdk:v2-user:2.16.0") // 카카오 로그인
-    implementation ("com.kakao.sdk:v2-talk:2.16.0") // 친구, 메시지(카카오톡)
-    implementation ("com.kakao.sdk:v2-share:2.16.0") // 메시지(카카오톡 공유)
-    implementation ("com.kakao.sdk:v2-friend:2.16.0") // 카카오톡 소셜 피커, 리소스 번들 파일 포함
+//    //카카오 로그인
+//    implementation ("com.kakao.sdk:v2-all:2.16.0") // 전체 모듈 설치, 2.11.0 버전부터 지원
+//    implementation ("com.kakao.sdk:v2-user:2.16.0") // 카카오 로그인
 
     //sdp
     implementation ("com.intuit.sdp:sdp-android:1.1.0")
@@ -114,5 +109,12 @@ dependencies {
     //오픈소스 라이선스
     implementation ("com.google.android.gms:play-services-oss-licenses:17.0.0")
 
-    implementation ("org.jetbrains.kotlin.plugin.parcelize:1.8.0")
+    // parcelize
+    runtimeOnly("org.jetbrains.kotlin:kotlin-parcelize-runtime:1.8.0")
+
+    // EncryptedSharedPreferences
+    implementation ("androidx.security:security-crypto-ktx:1.1.0-alpha03")
+
+    // gson
+    implementation ("com.google.code.gson:gson:2.8.9")
 }

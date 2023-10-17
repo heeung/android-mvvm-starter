@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 private const val TAG = "BaseRepositoryImpl_싸피"
 class BaseRepositoryImpl @Inject constructor(
-    private val baseAPIService: BaseService
+    private val baseService: BaseService
 ) : BaseRepository {
     // TODO 구현할 메소드
 }
