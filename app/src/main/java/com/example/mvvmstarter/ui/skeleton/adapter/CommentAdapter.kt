@@ -1,5 +1,6 @@
 package com.example.mvvmstarter.ui.skeleton.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
@@ -11,7 +12,7 @@ import com.example.mvvmstarter.R
 import com.example.mvvmstarter.data.model.CommentDto
 import com.example.mvvmstarter.databinding.CommentItemBinding
 
-class CommentAdapter() : ListAdapter<CommentDto, CommentAdapter.CommentListHolder>(CommentListComparator) {
+class CommentAdapter : ListAdapter<CommentDto, CommentAdapter.CommentListHolder>(CommentListComparator) {
     companion object CommentListComparator : DiffUtil.ItemCallback<CommentDto>() {
         override fun areItemsTheSame(oldItem: CommentDto, newItem: CommentDto): Boolean {
             return oldItem == newItem
@@ -21,7 +22,7 @@ class CommentAdapter() : ListAdapter<CommentDto, CommentAdapter.CommentListHolde
             return oldItem.id  == newItem.id
         }
     }
-    inner class CommentListHolder(private val binding: CommentItemBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class CommentListHolder(val binding: CommentItemBinding) : RecyclerView.ViewHolder(binding.root){
         fun bindInfo(comment : CommentDto){
             binding.tvName.text = comment.name
             binding.tvEmail.text = comment.email
@@ -39,7 +40,9 @@ class CommentAdapter() : ListAdapter<CommentDto, CommentAdapter.CommentListHolde
         )
     }
 
-    override fun onBindViewHolder(holder: CommentListHolder, position: Int) {
+    override fun onBindViewHolder(holder: CommentListHolder, @SuppressLint("RecyclerView") position: Int) {
         holder.bindInfo(getItem(position))
+
+        holder.binding.commentItem.animation = AnimationUtils.loadAnimation(holder.binding.commentItem.context, R.anim.list_item_anim_fade_in)
     }
 }
