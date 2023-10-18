@@ -1,5 +1,6 @@
 package com.example.mvvmstarter
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment

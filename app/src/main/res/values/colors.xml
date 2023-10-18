@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey">#B2B2B2</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- bottomNavColors -->
+    <color name="bottomBarColor">#FFFFFF</color>
+    <color name="selected_color">#49BEFF</color>
+    <color name="unselected_color">#D8D8D8</color>
 </resources>

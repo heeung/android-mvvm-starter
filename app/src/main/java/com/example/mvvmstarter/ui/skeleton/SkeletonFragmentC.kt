@@ -25,5 +25,14 @@ class SkeletonFragmentC : BaseFragment<FragmentSkeletonCBinding>(FragmentSkeleto
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnBottomSheet.setOnClickListener {
+            modalBottomSheet()
+        }
+    }
+
+    private fun modalBottomSheet() {
+        val modal = ModalBottomSheet()
+        modal.show(childFragmentManager, ModalBottomSheet.TAG)
     }
 }
