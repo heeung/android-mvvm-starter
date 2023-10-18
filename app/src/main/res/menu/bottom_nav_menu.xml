@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/skeletonFragmentA"
+        android:title="A"
+        android:icon="@drawable/baseline_keyboard_arrow_left_24"/>
+    <item android:id="@+id/skeletonFragmentB"
+        android:title="B"
+        android:icon="@drawable/baseline_keyboard_arrow_up_24"/>
+    <item android:id="@+id/skeletonFragmentC"
+        android:title="C"
+        android:icon="@drawable/baseline_keyboard_arrow_right_24"/>
+</menu>

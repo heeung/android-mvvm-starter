@@ -21,7 +21,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object ServiceModule {
 
-    private const val BASE_URL = "" // TODO Url 추가 필요
+    private const val BASE_URL = "https://jsonplaceholder.typicode.com/" // TODO Url 추가 필요
 
     @Singleton
     @Provides
@@ -50,6 +50,7 @@ object ServiceModule {
 
     @Singleton
     @Provides
-    fun provideMainAPIService(retrofit: Retrofit) : BaseService =
-        retrofit.create(BaseService::class.java)
+    fun provideMainAPIService(
+        retrofit: Retrofit
+    ) : BaseService = retrofit.create(BaseService::class.java)
 }

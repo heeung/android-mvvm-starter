@@ -1,8 +1,11 @@
 package com.example.mvvmstarter.util
 
+import android.util.Log
 import com.example.mvvmstarter.data.throwable.DataThrowable
 import org.json.JSONObject
 import retrofit2.Response
+
+private const val TAG = "NetworkUtil"
 
 private fun <T> Response<T>.isDelete(): Boolean {
     return this.raw().request.method == "DELETE"
@@ -20,6 +23,8 @@ fun <T> Response<T>.getValueOrThrow(): T {
     val jsonObject = errorResponse?.let { JSONObject(it) }
     val code = jsonObject?.getInt("code") ?: 0
     val message = jsonObject?.getString("message") ?: ""
+
+    Log.e(TAG, "getValueOrThrow: Error code : ${code}, message : ${message}")
 
     when (code) {
         in 100..199 -> { throw DataThrowable.Base100Throwable(code, message) }

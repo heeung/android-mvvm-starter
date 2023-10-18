@@ -127,6 +127,6 @@ class AuthInterceptor : Interceptor {
         private const val AUTH_TOKEN_EXPIRE_ERROR = 401 // TODO 서버에 맞게 수정
         private const val AUTH_TOKEN_ERROR = 402 // TODO 서버에 맞게 수정
 
-        private const val BASE_URL = "" //TODO url 넣기
+        private const val BASE_URL = "https://jsonplaceholder.typicode.com/" //TODO url 넣기
     }
 }
